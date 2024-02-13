@@ -78,8 +78,8 @@
         $_SESSION["username"] = $username;
         $_SESSION["activeTime"] = time();
 
-        // header("Location: ../");
-        // exit();
+        header("Location: ../main.php");
+        exit();
     }
 
 ?>

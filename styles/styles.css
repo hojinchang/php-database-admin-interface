@@ -198,6 +198,16 @@ button[type="submit"] {
 }
 
 .link {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    text-decoration: underline;
+}
+
+h3 {
+    font-size: 1.3rem;
+}
+
+.add-student {
+    color: white;
+    font-size: 1.2rem;
     text-decoration: underline;
 }
