@@ -1,0 +1,203 @@
+/* General Styles */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family: 'Roboto', sans-serif;
+}
+
+:root {
+    --primary-colour: #222324;
+    --secondary-colour: #2A2B2C;
+    --accent-colour: #2e2e2e;
+    --header-colour: #66D0FA;
+    --text-colour: white;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--header-colour);
+    margin: 1rem 0;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+a,
+a:visited {
+    text-decoration: none;
+    color: var(--header-colour);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--primary-colour);
+    color: var(--text-colour);
+}
+
+header {
+    background-color: var(--secondary-colour);
+    text-align: center;
+    padding: 1rem;
+    width: 100%;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3rem;
+    margin: 5rem auto;
+    max-width: 1000px;
+    width: 100%;
+}
+
+footer {
+    background-color: var(--secondary-colour);
+    padding: 1rem;
+    text-align: center;
+    width: 100%;
+}
+
+footer p {
+    margin-bottom: 0;
+}
+
+section {
+    background-color: var(--secondary-colour);
+    padding: 3rem;
+    border-radius: 12px;
+}
+
+.scriptDemo h2 {
+    padding-top: 1rem;
+}
+
+section.nestedSection {
+    background-color: var(--primary-colour);
+    padding: 1rem;
+}
+
+section.nestedSection h3 {
+    margin-top: 0;
+}
+
+section h2 {
+    margin-top: 0;
+}
+
+section h3 {
+    margin-top: 2rem;
+}
+
+.objectives p {
+    margin-bottom: 0;
+}
+
+code {
+    background-color: #6B6B6B;
+    font-weight: 500;
+}
+
+ul,
+ol {
+    padding: 0 30px;
+    margin: 1rem 0;
+}
+
+ul li,
+ol li {
+    padding: 0.2rem;
+}
+
+
+form {
+    margin-top: 2rem;
+    padding: 2rem;
+    background-color: var(--primary-colour);
+    border-radius: 12px;
+    border: 2px black solid;
+
+    max-width: 600px;
+}
+
+fieldset {
+    border-radius: 6px;
+}
+
+fieldset {
+    padding: 1rem;
+}
+
+fieldset.sub-field {
+    background-color: var(--secondary-colour);
+    margin-top: 1rem;
+}
+
+legend {
+    color: var(--header-colour);
+    background-color: var(--accent-colour);
+    padding: 0.5rem;
+    border: 1px black solid;
+    border-radius: 6px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid;
+    padding: 0.5rem 1rem;
+}
+
+th {
+    background-color: var(--primary-colour);
+}
+
+/* Assignment specific styles */
+
+.form-input-container {
+    margin-bottom: 1rem;
+}
+
+form > div {
+    margin-bottom: 0.5rem;
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="number"]
+ {
+    width: 100%;
+    padding: 5px; 
+    margin-top: 5px; 
+    border-radius: 6px;
+}
+
+input:focus {
+    outline: none;
+    border: 2px solid var(--header-colour);
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2rem;
+}
+
+button[type="submit"] {
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--header-colour);
+    border: 1px black solid;
+    border-radius: 6px;
+}
+
+.link {
+    font-size: 1.5rem;
+    text-decoration: underline;
+}
