@@ -15,8 +15,6 @@
             $_SESSION['activeTime'] = time();
         }
     } else {
-        $errors = urlencode(serialize(["Please log in to view content"]));
-
         $_SESSION["errorMessages"] = ["Please log in to view content"];
         header("Location: index.php");
         exit();

@@ -28,9 +28,9 @@
                     unset($_SESSION["errorMessages"]);
                 }
 
-                if (isset($_SESSION["loginTime"])) {
+                if (isset($_SESSION["activeTime"])) {
                     $username = ucfirst($_SESSION["username"]);
-                    $totalTimeLoggedIn = time() - $_SESSION["loginTime"];
+                    $totalTimeLoggedIn = time() - $_SESSION["activeTime"];
     
                     echo "<p>You were logged in for $totalTimeLoggedIn seconds. Thanks for your time, <b>$username</b>!</p>";
             
