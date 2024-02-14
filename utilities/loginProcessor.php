@@ -43,7 +43,7 @@
             exit();
         }
 
-        // Protext against SQL injection
+        // Protect against SQL injection
         $username = $database->real_escape_string($username);
         $password = $database->real_escape_string($password);
 

@@ -44,7 +44,7 @@
                 }
 
                 // Query select every student
-                $query = "SELECT id, firstname, lastname FROM students";
+                $query = "SELECT id, firstname, lastname FROM students;";
                 $results = $database->query($query);
 
                 if ($results->num_rows > 0) {
