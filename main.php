@@ -78,6 +78,9 @@
                             echo "<th>$field->name</th>";
                         }
                     }
+
+                    echo "<th>Delete</th>";
+                    echo "<th>Update</th>";
                     echo "</tr>";
 
                     while($record = $results->fetch_row()) {
@@ -85,6 +88,10 @@
                         foreach($record as $data) {
                             echo "<td>$data</td>";
                         }
+
+                        echo "<td><a class='table-link' href='./deleteStudent.php'>delete</a></td>";
+                        echo "<td><a class='table-link' href='./updateStudent.php'>update</a></td>";
+
                         echo "</tr>";
                     }
 
