@@ -11,10 +11,9 @@
             header("Location: logout.php");
             exit();
         }
-        
+
     } else {
         $_SESSION["errorMessages"] = ["Please log in to view content"];
         header("Location: index.php");
         exit();
     }
-?>
