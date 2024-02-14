@@ -22,11 +22,17 @@
             <h2>Administering DB From a Form</h2>
             <?php
                 echo "<p>Hello <b>". ucfirst($_SESSION["username"]) ."</b>. You are authorized to view the content</p>";
+
+                // Display message
+                if (isset($_SESSION["message"])) {
+                    echo $_SESSION["message"];
+
+                    unset($_SESSION["message"]);
+                }
             ?>
 
             <h3>Students:</h3>
-
-            <a class="add-student" href="./addStudentPage.php">Add a Student</a>
+            <a class="add-student" href="./addStudent.php">Add a Student</a>
 
             <?php 
                 // Connect to database
@@ -63,7 +69,6 @@
 
                     echo "</table>";
                 }
-
             ?>
         </section>
 

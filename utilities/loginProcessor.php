@@ -19,6 +19,7 @@
     }
 
     if (isset($_POST["username"]) && isset($_POST["password"])) {
+        // Normalize form data
         $username = trim($_POST["username"]);
         $password = trim($_POST["password"]);
 
