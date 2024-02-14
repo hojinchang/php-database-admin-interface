@@ -36,7 +36,7 @@
 
     <main>
         <section class="scriptDemo">
-            <h2>Administering DB From a Form</h2>
+            <h2>Administering Database From a Form</h2>
             <?php
                 echo "<p>Hello <b>". ucfirst($_SESSION["username"]) ."</b>. You are authorized to view the content.</p>";
 
@@ -89,7 +89,9 @@
                             echo "<td>$data</td>";
                         }
 
-                        echo "<td><a class='table-link' href='./deleteStudent.php'>delete</a></td>";
+                        $record = urlencode(serialize($record));
+
+                        echo "<td><a class='table-link' href='./deleteStudent.php?record=$record'>delete</a></td>";
                         echo "<td><a class='table-link' href='./updateStudent.php'>update</a></td>";
 
                         echo "</tr>";
