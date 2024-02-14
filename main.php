@@ -66,6 +66,10 @@
 
             ?>
         </section>
+
+        <section class="scriptDemo">
+            <a class="logout" href="./logout.php">Logout</a>
+        </section>
     </main>
 
 

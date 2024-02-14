@@ -213,3 +213,12 @@ h3 {
     display: block;
     margin-bottom: 1rem;
 }
+
+.logout,
+.logout:visited {
+    padding: 0.5rem 1rem;
+    background-color: var(--header-colour);
+    color: var(--primary-colour);
+    border-radius: 6px;
+}
+
