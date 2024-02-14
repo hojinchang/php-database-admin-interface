@@ -229,3 +229,7 @@ p.bad {
 p.good {
     color: green;
 }
+
+.table-link {
+    text-decoration: underline;
+}

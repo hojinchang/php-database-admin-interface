@@ -11,6 +11,23 @@
     require_once("./utilities/sessionGuard.php");
 ?>
 
+<!-- Set sort order -->
+<?php
+    $sortOrder = "id";
+    $validChoices = ["id", "firstname", "lastname"];
+
+    if (isset($_GET["sort"])) {
+        // If a valid sort query string was sent, set the sort order
+        if (in_array($_GET["sort"], $validChoices)) {
+            $sortOrder = $_GET["sort"];
+        } else {
+            $_SESSION["errorMessages"] = [$_GET['choice']." is not a valid sort choice!"];
+            header("Location: ../main.php");
+            exit();
+        }
+    }
+?>
+
 <body>
     <!-- Import header -->
     <?php
@@ -21,12 +38,11 @@
         <section class="scriptDemo">
             <h2>Administering DB From a Form</h2>
             <?php
-                echo "<p>Hello <b>". ucfirst($_SESSION["username"]) ."</b>. You are authorized to view the content</p>";
+                echo "<p>Hello <b>". ucfirst($_SESSION["username"]) ."</b>. You are authorized to view the content.</p>";
 
                 // Display message
                 if (isset($_SESSION["message"])) {
                     echo $_SESSION["message"];
-
                     unset($_SESSION["message"]);
                 }
             ?>
@@ -44,7 +60,8 @@
                 }
 
                 // Query select every student
-                $query = "SELECT id, firstname, lastname FROM students;";
+                $sortOrder = $database->real_escape_string($sortOrder);
+                $query = "SELECT id, firstname, lastname FROM students ORDER BY $sortOrder;";
                 $results = $database->query($query);
 
                 if ($results->num_rows > 0) {
@@ -55,7 +72,11 @@
                     echo "<table>";
                     echo "<tr>";
                     foreach($tableFields as $field) {
-                        echo "<th>$field->name</th>";
+                        if ($field->name == "id" || $field->name == "firstname" || $field->name == "lastname") {
+                            echo "<th><a class='table-link' href='". $_SERVER["PHP_SELF"]. "?sort=$field->name'>". ucfirst($field->name) ."</a></th>";
+                        } else {
+                            echo "<th>$field->name</th>";
+                        }
                     }
                     echo "</tr>";
 
