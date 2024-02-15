@@ -11,31 +11,6 @@
     require_once("./utilities/sessionGuard.php");
 ?>
 
-
-<!-- Self processing form processing -->
-<?php 
-    // Initialize for values
-    $deleteStudent = "";
-
-    // if (!isset($_POST["deleteStudent"])) {
-    //     $_SESSION["message"] = "<p class='bad'>Please select a student to delete.</p>";
-    //     header("Location: ./main.php");
-    //     exit();
-    // } else {
-    //     $deleteStudent = trim($_POST["deleteStudent"]);
-
-    // }
-
-
-    // if (isset($_POST["deleteStudent"])) {
-    //     $deleteStudent = trim($_POST["deleteStudent"]);
-
-    //     if ($deleteStudent == "yes") {
-    //         $
-    //     }
-    // }
-?>
-
 <body>
     <!-- Import header -->
     <?php
