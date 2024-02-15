@@ -92,7 +92,7 @@
                         $record = urlencode(serialize($record));
 
                         echo "<td><a class='table-link' href='./deleteStudent.php?record=$record'>delete</a></td>";
-                        echo "<td><a class='table-link' href='./updateStudent.php'>update</a></td>";
+                        echo "<td><a class='table-link' href='./updateStudent.php?record=$record''>update</a></td>";
 
                         echo "</tr>";
                     }

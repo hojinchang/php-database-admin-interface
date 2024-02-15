@@ -26,7 +26,6 @@
                 require_once("./utilities/displayFormErrors.php");
             ?>
             
-            <!-- Self processing form -->
             <form action="./utilities/addStudentProcessor.php" method="POST">
                 <fieldset>
                     <legend>Add a record</legend>
