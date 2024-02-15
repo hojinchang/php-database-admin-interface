@@ -70,6 +70,7 @@
                     <legend>Delete a record - Are you sure?</legend>
                     
                     <?php
+                        // If the student visits the deleteStudent.php page by clicking the delete student link, save the student record
                         if (isset($_GET["record"])) {
                             $record = $_GET["record"];
                             $record = unserialize(urldecode($record));
@@ -78,7 +79,7 @@
 
                             // Output the student that will be deleted 
                             echo "<p>".$record[0]." ".$record[1]." ".$record[2]."</p>";
-                        } else {
+                        } else {   // Send the user back to main.php if they visit this page without clicking the link
                             $_SESSION["message"] = "<p class='bad'>Please select a student to delete.</p>";
                             header("Location: ./main.php");
                             exit();

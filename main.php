@@ -96,9 +96,9 @@
 
                         echo "</tr>";
                     }
-
                     echo "</table>";
                 }
+                $database->close();
             ?>
         </section>
 
