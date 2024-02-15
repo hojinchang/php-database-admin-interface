@@ -1,3 +1,4 @@
+<!-- Self processing form -->
 <?php
     // Import mySQL database information
     require_once("../dbinfo.php");
@@ -13,12 +14,12 @@
     $firstName = "";
     $lastName = "";
 
-    // If the user visits addStudent.php without filling out the form
+    // If the user visits updateStudent.php without filling out the form
     if (!isset($_POST["studentNumber"]) 
         || !isset($_POST["firstName"])
         || !isset($_POST["lastName"])
     ) {
-        $_SESSION["message"] = "<p class='bad'>Please use the form to add students.</p>";
+        $_SESSION["message"] = "<p class='bad'>Please use the form to update the student record</p>";
         header("Location: ../main.php");
         exit();
     }
@@ -45,11 +46,11 @@
         }
     }
 
-    // If there are form errors, send them back to addStudent.php
+    // If there are form errors, send them back to updateStudent.php
     if (count($errors) > 0) {
         $_SESSION["errorMessages"] = $errors;
-        header("Location: ../addStudent.php");
-        exit;
+        header("Location: ../main.php");
+        exit();
     } else {
         $database = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
         if (mysqli_connect_errno() != 0) {
@@ -63,31 +64,38 @@
         $firstName = $database->real_escape_string($firstName);
         $lastName = $database->real_escape_string($lastName);
 
-        // Query to insert new student into students table
-        $query = "INSERT INTO students (id, firstname, lastname) VALUES('$studentNumber', '$firstName', '$lastName');";
+        // Get the student record from the session
+        $record = $_SESSION["record"];
+        $studentNumberRecord = $record[0];
+        // Delete student record from session
+        unset($_SESSION["record"]);
 
+        // Query to update student field
+        $query = "UPDATE students SET id='$studentNumber', firstName='$firstName', lastName='$lastName' WHERE id='$studentNumberRecord'";
         $error = "";
         try {
             // Run query
             $result = $database->query($query);
         } catch(Exception $e) {
             $error = $e->getMessage();
-            $_SESSION["message"] = "<p class='bad'>$error.<br> Record NOT added: $studentNumber $firstName $lastName</p>";
+            $_SESSION["message"] = "<p class='bad'>$error.<br> Record NOT updated: $studentNumber $firstName $lastName</p>";
             header("Location: ../main.php");
             exit();
         }
-
+        
         if ($database->affected_rows == 0) {
-            $_SESSION["message"] = "<p class='bad'>There was a problem adding the student to the database. $error<br>Please try again.</p>";
+            $_SESSION["message"] = "<p class='bad'>There was a problem updating the student to the database. $error<br>Please try again.</p>";
             header("Location: ../main.php");
             exit();
         }
 
         $database->close();
-
-        // Successfully added a student into the table, send user back to main.php
-        $_SESSION["message"] = "<p class='good'>Record Added: $studentNumber $firstName $lastName</p>";
+        
+        // Successfully updated a student into the table, send user back to main.php
+        $_SESSION["message"] = "<p class='good'>Record Updated: $studentNumber $firstName $lastName</p>";
         header("Location: ../main.php");
         exit();
+    
+    
     }
 ?>

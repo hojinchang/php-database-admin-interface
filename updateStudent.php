@@ -20,9 +20,14 @@
     <main>
         <section class="scriptDemo">
             <h2>Update a student...</h2>
+
+            <?php
+                // Display form processing errors if they exist
+                require_once("./utilities/displayFormErrors.php");
+            ?>
             
             <!-- Self processing form -->
-            <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="POST">
+            <form action="./utilities/updateStudentProcessor.php" method="POST">
                 <?php 
                     // If the student visits the updateStudent.php page by clicking the update student link, save the student record
                     if (isset($_GET["record"])) {
