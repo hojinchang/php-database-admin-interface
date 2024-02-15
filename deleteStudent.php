@@ -28,7 +28,7 @@
 
                 if (isset($_POST["deleteStudent"])) {
                     $deleteStudent = trim($_POST["deleteStudent"]);
-
+                    // If the user submitted yes
                     if ($deleteStudent == "yes") {
                         $database = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
                         if (mysqli_connect_errno() != 0) {
@@ -36,8 +36,6 @@
                             header("Location: ./main.php");
                             exit();
                         }
-
-                        // $studentNumber = $record[0];
 
                         // Get the student record from the session
                         $record = $_SESSION["record"];
@@ -54,14 +52,18 @@
                             : $_SESSION["message"] = "<p class='bad'>Record NOT Deleted.</p>";
 
                         $database->close();
-                        
-                    } else if ($deleteStudent == "no") {
+                    // If the user submitted no
+                    } else {
                         $_SESSION["message"] = "<p class='bad'>Record NOT Deleted.</p>";
                     }
 
                     header("Location: ./main.php");
                     exit();
-                } 
+                } else {
+                    $_SESSION["message"] = "<p class='bad'>Record NOT Deleted.</p>";
+                    header("Location: ./main.php");
+                    exit();
+                }
             ?>
             
             <!-- Self processing form -->
