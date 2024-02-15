@@ -40,8 +40,6 @@
                         // Get the student record from the session
                         $record = $_SESSION["record"];
                         $studentNumber = $record[0];
-                        // Delete student record from session
-                        unset($_SESSION["record"]);
 
                         // Deletion query
                         $query = "DELETE FROM students WHERE id='$studentNumber';";
@@ -57,10 +55,9 @@
                         $_SESSION["message"] = "<p class='bad'>Record NOT Deleted.</p>";
                     }
 
-                    header("Location: ./main.php");
-                    exit();
-                } else {
-                    $_SESSION["message"] = "<p class='bad'>Record NOT Deleted.</p>";
+                    // Delete student record from session
+                    unset($_SESSION["record"]);
+
                     header("Location: ./main.php");
                     exit();
                 }
