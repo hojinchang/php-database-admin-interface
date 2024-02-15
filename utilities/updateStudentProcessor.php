@@ -48,7 +48,7 @@
 
     // If there are form errors, send them back to updateStudent.php
     if (count($errors) > 0) {
-        $_SESSION["errorMessages"] = $errors;
+        $_SESSION["message"] = "<p class='bad'>Record NOT updated, missing form values: ".$_SESSION["record"][0]. " " .$_SESSION["record"][1]. " " .$_SESSION["record"][2]."</p>";
         header("Location: ../main.php");
         exit();
     } else {
@@ -67,8 +67,6 @@
         // Get the student record from the session
         $record = $_SESSION["record"];
         $studentNumberRecord = $record[0];
-        // Delete student record from session
-        unset($_SESSION["record"]);
 
         // Query to update student field
         $query = "UPDATE students SET id='$studentNumber', firstName='$firstName', lastName='$lastName' WHERE id='$studentNumberRecord'";
@@ -95,7 +93,8 @@
         $_SESSION["message"] = "<p class='good'>Record Updated: $studentNumber $firstName $lastName</p>";
         header("Location: ../main.php");
         exit();
-    
-    
     }
+
+    // Delete student record from session
+    unset($_SESSION["record"]);
 ?>
